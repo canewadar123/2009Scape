@@ -12,15 +12,19 @@ java 8
 Git clone this repository, or download the latest source with the clone or download button
 
 ## Building the server:
-In a terminal, enter both the Management-Server and Server folders and run `gradle build`
+### Option 1: Build script(Linux/Unix only.)
+- In a terminal, navigate to the project root (for example, /home/user/2009scape)
+- Use ./build.sh:
+  - Management server: ./build.sh ms
+  - Game server: ./build.sh server
+  - Client: ./build.sh client
+    - If you wish to distribute copies of the client, an output jar with the IP you set is located in Client/bin/2009scape
+### Option 2: gradle by itself
+- In a terminal, enter both the Management-Server and Server folders and run `gradle build`
 
-#### Optional: setting the server ip address for non-local servers
-In Client/src/main/java/org/runite/Configurations.java set LOCAL_MS and LOCAL_SERVER to false
-
-In Client/src/main/java/org/runite/Client.java set PUBLIC_IP_ADDRESS to your server's ip address
-
-## Building the client:
-In a terminal, enter the Client folder and run `gradle build`
+#### Building the client:
+- In a terminal, enter the Client folder and run `gradle build`
+  - The build process should prompt you to enter a different IP, this is when you would set the IP you want the client to connect to.
 
 ## Installing the databases:
 
@@ -47,8 +51,14 @@ mysql -u root -p global < global.sql
 ```
 
 ## Running the server/client
-In a terminal, navigate to the Management-Server folder and run `gradle run`
-
-Then navigate to the Server folder and run `gradle run`
-
-The client can also be run with `gradle run`. Gradle also generates jars that you can distribute inside Client/build/distributions/Client.zip
+### Option 1: Using the run script (Linux/Unix only.)
+- From the project root:
+  - Step 1: Start up mysql or whichever database server you are using if it isn't already running.
+  - Step 2: Start the management server ``./run.sh ms``
+  - Step 3: Start the game server ``./run.sh server Server/worldprops/server1.properties``
+  - The client can be ran either using `./run.sh client` or by running the .jar you generated earlier.
+  
+### Option 2: Gradle by itself
+- In a terminal, navigate to the Management-Server folder and run `gradle run`
+- Then navigate to the Server folder and run `gradle run`
+- The client can also be run with `gradle run` or by using the jar generated earlier.
