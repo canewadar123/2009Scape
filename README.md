@@ -45,6 +45,17 @@ Since this portion of the guide is operating-system specific, you will either ne
 
 
 ## Step 4: Running the Server & Client
+### With gradle (Best with Linux/Unix-like):
+- Run the management server
+  - In the project root, type ./run.sh --build ms
+- Run the server
+  - In the project root, type ./run.sh --build server
+- Run the client
+  - In the project root, type ./run.sh --build client
+- **If you wish to distribute copies of the client,** you can run ./build.sh client
+  - This will prompt you to change the IP. Select y, then type in the IP for your server. 
+  - This will build a jar that you can find at Client/bin/2009scape.jar
+### With Intellij:
 - Run the management-server
   - In IntelliJ, select the Management Server configuration, click Run
 - Run the server
